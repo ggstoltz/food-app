@@ -1,5 +1,5 @@
 var express = require("express");
-
+var passport = require("./config/passport")
 // Sets up the Express App
 // =============================================================
 

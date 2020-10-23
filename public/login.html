@@ -23,7 +23,6 @@
 </head>
 
 <body>
-    <!-- Nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">food app</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,10 +31,10 @@
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link active">home</a>
+                    <a class="nav-link" href="/">home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/grocery">grocery list</a>
+                    <a class="nav-link active">grocery list</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/meal-plan">meal plan</a>
@@ -52,6 +51,30 @@
             </ul>
         </div>
     </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2>Login Form</h2>
+        <form class="login">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="email-input" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="password-input" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">Login</button>
+        </form>
+        <br />
+        <p>Or register <a href="/food-app/public/register.html">here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/login.js"></script> -->
 
 </body>
 

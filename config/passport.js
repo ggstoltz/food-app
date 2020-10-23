@@ -1,7 +1,7 @@
 // var passport = require("passport");
 // var LocalStrategy = require("passport-local").Strategy;
 //example code from the homework for now, will edit
-
+var db = require("../models")
 
 // var db = require("../models");
 
