@@ -1,0 +1,22 @@
+{
+    "name": "food-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js",
+        "watch": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.16.3",
+        "handlebars": "^4.7.6",
+        "image-js": "^0.30.3",
+        "mysql2": "^1.6.4",
+        "sequelize": "^4.41.2",
+        "express-handlebars": "^5.1.0"
+    }
+}
