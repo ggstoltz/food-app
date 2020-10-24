@@ -1,5 +1,7 @@
 var express = require("express");
-var passport = require("./config/passport")
+var session = require('express-session')
+var passport = require('passport');
+require("./config/passport")
 // Sets up the Express App
 // =============================================================
 
@@ -15,6 +17,7 @@ app.use(express.json());
 
 // Static directory
 app.use(express.static("public"));
+
 
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());

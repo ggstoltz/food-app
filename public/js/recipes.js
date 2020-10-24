@@ -14,6 +14,7 @@ $(document).ready(function () {
     var recipeForm = $("#recipe");
 
 
+
     // Adding an event listener for when the form is submitted
     $(recipeForm).on("submit", handleFormSubmit);
 
@@ -48,9 +49,7 @@ $(document).ready(function () {
             soy: soyCheck.is(':checked'),
             fish: fishCheck.is(':checked'),
         };
-
-        console.log(dairyCheck.prop("checked", true))
-
+        console.log("hello");
         submitPost(newRecipe);
     }
 
@@ -60,5 +59,6 @@ $(document).ready(function () {
             window.location.href = "/recipes";
         });
     }
+
 });
 
