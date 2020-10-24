@@ -41,6 +41,7 @@ module.exports = function (app) {
         res.render("login", {
             title: "Login",
             login: "active",
+            script: "/js/login.js"
         })
     })
 
@@ -48,6 +49,7 @@ module.exports = function (app) {
         res.render("register", {
             title: "Register",
             register: "active",
+            script: "/js/register.js"
         })
     })
 
