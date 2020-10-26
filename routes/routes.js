@@ -8,24 +8,19 @@ module.exports = function (app) {
 
     // index route loads view.html
 
-    app.get("/", (req, res) => {
-        res.render("index", {
-            title: "Home",
-            home: "active"
-        })
-    })
-
     app.get("/grocery", (req, res) => {
         res.render("grocery", {
             title: "Grocery",
-            grocery: "active"
+            grocery: "active",
+            script: "/js/grocery.js"
         })
     })
 
     app.get("/meal-plan", (req, res) => {
         res.render("meal-plan", {
             title: "Meal-Plan",
-            mealPlan: "active"
+            mealPlan: "active",
+            script: "/js/meal-plan.js"
         })
     })
 
@@ -37,10 +32,11 @@ module.exports = function (app) {
         })
     })
 
-    app.get("/login", (req, res) => {
+    app.get("/", (req, res) => {
         res.render("login", {
             title: "Login",
             login: "active",
+            script: "/js/login.js"
         })
     })
 
@@ -48,6 +44,14 @@ module.exports = function (app) {
         res.render("register", {
             title: "Register",
             register: "active",
+            script: "/js/register.js"
+        })
+    })
+
+    app.get("/recipefor/:id", (req, res) => {
+        res.render("recipefor", {
+            title: "Recipes",
+            script: "/js/recipefor.js"
         })
     })
 

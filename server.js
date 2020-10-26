@@ -1,8 +1,9 @@
 const express = require("express")
 const app = express()
 const expbs = require("express-handlebars")
+var session = require('express-session')
 var passport = require('passport');
-require("./config/passport")
+
 
 // Sets up the Express App
 // =============================================================
@@ -26,12 +27,18 @@ app.set("view engine", "handlebars")
 // Static directory
 app.use(express.static("public"));
 
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Routes
 // =============================================================
 require("./routes/recipes-api-routes.js")(app);
+require("./routes/meal-plan-api-routes.js")(app);
+require("./routes/grocery-api-routes.js")(app);
 require("./routes/routes.js")(app);
+require("./routes/api-routes.js")(app);
 require("./config/passport")
-
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

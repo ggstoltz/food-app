@@ -12,8 +12,27 @@ $(document).ready(function () {
     var soyCheck = $("#soy");
     var fishCheck = $("#fish");
     var recipeForm = $("#recipe");
+    var recipeImgDiv = $("#recipe-img")
+    var recipeImg
 
+    $(document).on("click", "button.del-btn", handleRecipeDelete);
 
+    function handleRecipeDelete() {
+        var currentRecipe = $(this)
+            .parent()
+            .data("recipe");
+        deleteRecipe(currentRecipe.id);
+    }
+
+    function deleteRecipe(id) {
+        $.ajax({
+            method: "DELETE",
+            url: "/api/recipes/" + id
+        })
+            .then(function () {
+                window.location.href = "/recipes";
+            });
+    }
 
     // Adding an event listener for when the form is submitted
     $(recipeForm).on("submit", handleFormSubmit);
@@ -23,8 +42,13 @@ $(document).ready(function () {
         event.preventDefault();
         // Wont submit the post if we are missing a author, recipe-name, ingredients or steps 
         if (!authorInput.val().trim() || !imgInput.val().trim() || !nameInput.val().trim() || !ingredientsInput.val().trim() || !stepsInput.val().trim()) {
+            alert("You must have an author, image, recipe name, ingredients and steps before you can post the recipe")
             return;
         }
+        var switchIngt = ingredientsInput.val().trim()
+        var newIngt = switchIngt.replace(/\n\r?/g, '<br>');
+        var switchSteps = stepsInput.val().trim()
+        var newSteps = switchSteps.replace(/\n\r?/g, '<br>');
         // Constructing a newPost object to hand to the database
         var newRecipe = {
             author: authorInput
@@ -36,12 +60,8 @@ $(document).ready(function () {
             img: imgInput
                 .val()
                 .trim(),
-            ingredients: ingredientsInput
-                .val()
-                .trim(),
-            steps: stepsInput
-                .val()
-                .trim(),
+            ingredients: newIngt,
+            steps: newSteps,
             dairy: dairyCheck.is(':checked'),
             eggs: eggsCheck.is(':checked'),
             nuts: nutsCheck.is(':checked'),
@@ -49,16 +69,54 @@ $(document).ready(function () {
             soy: soyCheck.is(':checked'),
             fish: fishCheck.is(':checked'),
         };
-        console.log("hello");
+        // uploadImg(imgInput)
         submitPost(newRecipe);
     }
 
-    // Submits a new post and brings user to blog page upon completion
+    // Submits a new recipe and reloads the page
     function submitPost(recipe) {
         $.post("/api/recipes", recipe, function () {
             window.location.href = "/recipes";
         });
     }
 
+    $(document).ready(getRecipes())
+
+    function getRecipes() {
+        $.get("/api/recipes", function (data) {
+            recipeImg = data
+            initializeImg();
+        });
+    }
+
+    function initializeImg() {
+        var recipesToAdd = [];
+        for (var i = 0; i < recipeImg.length; i++) {
+            recipesToAdd.push(createNewRecipe(recipeImg[i]));
+        }
+        recipeImgDiv.append(recipesToAdd);
+    }
+
+
+    function createNewRecipe(recipe) {
+        var newRecipeImg = $("<div>");
+        newRecipeImg.addClass("img-con");
+        var newRecipeAncher = $("<a>");
+        newRecipeAncher.attr("href", "/recipefor/" + recipe.id)
+        var newImg = $("<img>")
+        newImg.addClass("upload-img")
+        newImg.attr("src", recipe.img)
+        var deleteBtn = $("<button>");
+        deleteBtn.text("x");
+        deleteBtn.addClass("del-btn");
+        newRecipeAncher.append(newImg)
+        newRecipeImg.append(newRecipeAncher);
+        newRecipeImg.append(deleteBtn);
+        newRecipeImg.data("recipe", recipe);
+        return newRecipeImg;
+    }
+
 });
+// https://i.ibb.co/3CqyhVH/pizzaq.jpg
+// https://i.ibb.co/2crKLXb/Pizza.png
 
