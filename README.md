@@ -28,4 +28,4 @@ Andrew Theisen \
 Jesus Rubio \
 Ruth Vang \
 Yusuf Sharif \
-Gunnar Stoltz \
+Gunnar Stoltz
