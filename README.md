@@ -24,8 +24,8 @@ For this project we ran into a few issues but we worked through them to solve ou
 
 ## Group Members
 
-Andrew Theisen
-Jesus Rubio
-Ruth Vang
-Yusuf Sharif
-Gunnar Stoltz
+Andrew Theisen \
+Jesus Rubio \
+Ruth Vang \
+Yusuf Sharif \
+Gunnar Stoltz \
