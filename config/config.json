@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "HappyDay$2020!",
+        "password": null,
         "database": "recipes",
         "host": "127.0.0.1",
         "port": 3306,
